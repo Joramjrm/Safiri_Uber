@@ -1,3 +1,6 @@
+import * as React from 'react';
+import Map from 'react-map-gl';
+
 const Home = () => {
     return (
         <div>
