@@ -12,9 +12,8 @@ const Navbar = () => {
         <Link to='/help'className="text-white" >Help</Link>
         
       <ul className="container mx-auto flex justify-end space-x-9 ">
-      <Link to='/' className="text-white">Login</Link>
         <li>
-        <Link to='/about' className="text-white">Signin</Link>
+        <Link to='/signin' className="text-white">Signin</Link>
         </li>
         
       </ul>

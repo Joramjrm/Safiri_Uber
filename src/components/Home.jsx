@@ -1,66 +1,68 @@
-// import * as React from 'react';
-// import Map from 'react-map-gl';
+import React, { useState, useEffect } from 'react';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
-// const Home = () => {
-//     return (
-//         <div>
-//             <h1>Our Commitment to Safety</h1>
-//             <h3>
-//             With every safety feature and every standard in our Community Guidelines, <br />
-//             we're committed to helping to create a safe environment for our users.
-//             </h3>
-//         </div>
-//     )
-// }
 
-// export default Home;
-
-import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-
-const containerStyle = {
-  width: '400px',
-  height: '400px'
+const libraries = ['places'];
+const mapContainerStyle = {
+  width: '1264px',
+  height: '494px',
+};
+const defaultCenter = {
+  lat: 37.7749,
+  lng: -122.4194,
 };
 
-const center = {
-  lat: -3.745,
-  lng: -38.523
-};
+const Home = () => {
+  const [input, setInput] = useState('');
+  const [center, setCenter] = useState(defaultCenter);
 
-function MyComponent() {
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: "YOUR_API_KEY"
-  })
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: 'AIzaSyBpcm97vlVJh8svulYaYacFd8tKP4W2jZc',
+    libraries,
+  });
 
-  const [map, setMap] = React.useState(null)
+  useEffect(() => {
+    setCenter({
+      lat: parseFloat(input) || defaultCenter.lat,
+      lng: defaultCenter.lng,
+    });
+  }, [input]);
 
-  const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+  if (loadError) {
+    return <div>Error loading maps</div>;
+  }
 
-    setMap(map)
-  }, [])
+  if (!isLoaded) {
+    return <div>Loading maps</div>;
+  }
 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
-
-  return isLoaded ? (
+  return (
+    <div className='input-wrapper'>
       <GoogleMap
-        mapContainerStyle={containerStyle}
+        mapContainerStyle={mapContainerStyle}
+        zoom={18}
         center={center}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
+        <Marker position={center} />
       </GoogleMap>
+      <input
+        placeholder="Type to search..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <div className='bg-white max-w-mg mx-auto shadow-lg space-x-4 justify-center items-center '>
+            <h1 className='text-2xl font-bold '>Drive when you want, make what you need</h1>
+            <p className='text-gray-700 '>Make money on your schedule with deliveries or rides—or both. You can use your own car or choose a rental through Uber.</p>
+            <img src='' className='w-full' />
+        </div>
+      <div className='bg-white max-w-mg mx-auto shadow-lg space-x-4 justify-center items-center '>
+            <h1 className='text-2xl font-bold '></h1>
+            <p className='text-gray-700 '></p>
+            <img src='' className='w-full' />
+        </div>
+    </div>
     
-  ) : <></>
-}
+  );
+};
 
-export default React.memo(MyComponent)
+export default Home;

@@ -1,22 +1,32 @@
 import React from 'react';
+import './DriverProfileCard.css'; 
 
-const Profile = () => {
+const DriverProfileCard = () => {
   return (
-    <div>
-      <div style={{ display: 'flex', backgroundColor: '#ffffff', borderRadius: '8px', padding: '20px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
-        <img src="profile.jpg" alt="Profile" style={{ width: '100px', height: '100px', borderRadius: '50%', marginRight: '20px' }} />
-        <div style={{ flex: 1 }}>
-          <h2 style={{ fontSize: '24px', margin: '0 0 5px 0' }}>John Smith</h2>
-          <p style={{ fontSize: '16px', color: '#666666', margin: '0' }}>Uber Driver</p>
-          <div style={{ marginTop: '10px' }}>
-            <p className="profile-detail">Rating: <span className="detail-value">4.9</span></p>
-            <p className="profile-detail">Number of Rides: <span className="detail-value">1500</span></p>
-            <p style={{ fontSize: '14px', margin: '5px 0' }}>Location: <span style={{ fontWeight: 'bold' }}>New York City</span></p>
-          </div>
+    <div className="driver-profile-card">
+      <div className="profile-image"></div>
+      <div className="profile-info">
+        <h2>Driver Profile</h2>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input type="text" id="name" placeholder="Your Name" />
         </div>
+        <div className="form-group">
+          <label htmlFor="car-model">Car Model:</label>
+          <input type="text" id="car-model" placeholder="Your Car Model" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="car-plate">Car Plate:</label>
+          <input type="text" id="car-plate" placeholder="Your Car Plate" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="rating">Rating:</label>
+          <input type="number" id="rating" placeholder="Your Rating" />
+        </div>
+        <button className="save-button">Save</button>
       </div>
     </div>
   );
 }
 
-export default Profile;
+export default DriverProfileCard;
