@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home"
+import Home from "./components/Home";
 import Footer from "./components/Footer";
-import Profile from "./components/Profile"
+import Profile from "./components/Profile";
 import About from "./components/About";
 import Signin from "./components/Signin";
 
-const App = () => {
+  const App = () => {
+  const [] = useState(null);
+
   return (
     <Router>
       <Navbar />
@@ -19,19 +21,7 @@ const App = () => {
       </Routes>
       <Footer />
     </Router>
-);
-};
-
-function App() {
-  const [origin, setOrigin] = useState('');
-  const [odestination, setDestination] = useState('');
-  const [Distance, setDistance] = useState('');
+  );
 }
-
-return (
-  <div>
-    
-  </div>
-)
 
 export default App;
