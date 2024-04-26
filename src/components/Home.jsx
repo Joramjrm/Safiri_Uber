@@ -11,6 +11,30 @@ const Home = () => {
   const [input, setInput] = useState('');
   const [totalAmount, setTotalAmount] = useState('');
   const [moneyPerKilometer, setMoneyPerKilometer] = useState(null);
+  const [pickupLocation, setPickupLocation] = useState('');
+  const [dropoffLocation, setDropoffLocation] = useState('');
+  const [vehicleType, setVehicleType] = useState('');
+  const [dateTime, setDateTime] = useState('');
+  const [isBookingNow, setIsBookingNow] = useState(true); // Default to booking for now
+
+  const handleBookingTypeChange = (e) => {
+    setIsBookingNow(e.target.value === 'now');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can handle the form submission, e.g., make API calls
+    console.log({
+      pickupLocation,
+      dropoffLocation,
+      vehicleType,
+      dateTime,
+      isBookingNow,
+    });
+  };
+
+  
+
 
   const calculateDistance = () => {
     if (originLatLng && destLatLng) {
@@ -137,6 +161,71 @@ const Home = () => {
         {moneyPerKilometer !== null && (
           <p>Money per kilometer: Ksh{moneyPerKilometer}</p>
         )}
+    </div>
+    <div className='booking'>
+      <h2>Book a Ride</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Pickup Location:
+          <input
+            type="text"
+            value={pickupLocation}
+            onChange={(e) => setPickupLocation(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Drop-off Location:
+          <input
+            type="text"
+            value={dropoffLocation}
+            onChange={(e) => setDropoffLocation(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Vehicle Type:
+          <select
+            value={vehicleType}
+            onChange={(e) => setVehicleType(e.target.value)}
+          >
+            <option value="">Select</option>
+            <option value="sedan">Sedan</option>
+            <option value="suv">SUV</option>
+            <option value="van">Van</option>
+          </select>
+        </label>
+        <br />
+        <label>
+          {isBookingNow ? 'Pickup Time:' : 'Date & Time:'}
+          <input
+            type={isBookingNow ? 'time' : 'datetime-local'}
+            value={dateTime}
+            onChange={(e) => setDateTime(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          <input
+            type="radio"
+            value="now"
+            checked={isBookingNow}
+            onChange={handleBookingTypeChange}
+          />
+          Book for Now
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="later"
+            checked={!isBookingNow}
+            onChange={handleBookingTypeChange}
+          />
+          Book for Later
+        </label>
+        <br />
+        <button type="submit">Book Ride</button>
+      </form>
     </div>
     </div>
   );
