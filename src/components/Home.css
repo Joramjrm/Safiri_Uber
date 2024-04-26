@@ -1,0 +1,33 @@
+.input-wrapper{
+    padding: 20px;
+}
+.map{
+    width: 867px; margin-right: auto; padding: 1px;border: 1px solid black;border-radius: 2px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.input{
+    border: 1px solid wheat;
+    border-radius: 5px;
+    padding: 10px;
+    width: 340px;
+    margin-left: 880px;
+    margin-top: -400px;
+    margin-bottom: 200px;
+}
+.info1 {
+    margin-top: 9px;
+    border: 1px solid rgb(236, 236, 236);
+    width: 180px;
+    border-radius: 6px;
+}
+.info2 {
+    border  : 1px solid rgb(236, 236, 236);
+    width: 180px;
+    border-radius: 6px;
+}
+.text {
+    text-align:center;
+}
+.text {
+    font-size: 18px;
+    font-weight: bold;
+}

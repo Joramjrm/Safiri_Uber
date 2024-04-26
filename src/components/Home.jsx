@@ -1,112 +1,6 @@
-// import React, { useState, useEffect } from 'react';
-// import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
-
-// function Home() {
-//   const [lat1, setLat1] = useState('');
-//   const [lon1, setLon1] = useState('');
-//   const [lat2, setLat2] = useState('');
-//   const [lon2, setLon2] = useState('');
-//   const [distance, setDistance] = useState(null);
-  
-//   const calculateDistance = () => {
-//     const R = 6371; 
-//     const dLat = deg2rad(lat2 - lat1);
-//     const dLon = deg2rad(lon2 - lon1);
-//     const a =
-//       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-//       Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-//       Math.sin(dLon / 2) * Math.sin(dLon / 2);
-//     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-//     const d = R * c; // Distance in km
-//     setDistance(d);
-//   }
-
-//   const deg2rad = (deg) => {
-//     return deg * (Math.PI / 180);
-//   }
-
-// const libraries = ['places'];
-// const mapContainerStyle = {
-//   width: '1264px',
-//   height: '494px',
-// };
-// const defaultCenter = {
-//   lat: 37.7749,
-//   lng: -122.4194,
-// };
-
-// const Home = () => {
-//   const [input, setInput] = useState('');
-//   const [center, setCenter] = useState(defaultCenter);
-
-//   const { isLoaded, loadError } = useLoadScript({
-//     googleMapsApiKey: 'AIzaSyBpcm97vlVJh8svulYaYacFd8tKP4W2jZc',
-//     libraries,
-//   });
-
-//   useEffect(() => {
-//     setCenter({
-//       lat: parseFloat(input) || defaultCenter.lat,
-//       lng: defaultCenter.lng,
-//     });
-//   }, [input]);
-
-//   if (loadError) {
-//     return <div>Error loading maps</div>;
-//   }
-
-//   if (!isLoaded) {
-//     return <div>Loading maps</div>;
-//   }
-
-//   return (
-//     <div className='input-wrapper'>
-//       <GoogleMap
-//         mapContainerStyle={mapContainerStyle}
-//         zoom={18}
-//         center={center}
-//       >
-//         <Marker position={center} />
-//       </GoogleMap>
-//       <input
-//         placeholder="Type to search..."
-//         value={input}
-//         onChange={(e) => setInput(e.target.value)}
-//       />
-//       <div>
-//       <h2>Distance Calculator</h2>
-//       <label>
-//         Latitude 1:
-//         <input type="text" value={lat1} onChange={(e) => setLat1(parseFloat(e.target.value))} />
-//       </label>
-//       <br />
-//       <label>
-//         Longitude 1:
-//         <input type="text" value={lon1} onChange={(e) => setLon1(parseFloat(e.target.value))} />
-//       </label>
-//       <br />
-//       <label>
-//         Latitude 2:
-//         <input type="text" value={lat2} onChange={(e) => setLat2(parseFloat(e.target.value))} />
-//       </label>
-//       <br />
-//       <label>
-//         Longitude 2:
-//         <input type="text" value={lon2} onChange={(e) => setLon2(parseFloat(e.target.value))} />
-//       </label>
-//       <br />
-//       <button onClick={calculateDistance}>Calculate Distance</button>
-//       {distance && <p>Distance: {distance.toFixed(2)} km</p>}
-//     </div>
-//     </div>
-    
-//   );
-// };
-
-// export default Home;
-
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import './Home.css';
 
 const Home = () => {
   const [origin, setOrigin] = useState('');
@@ -115,10 +9,12 @@ const Home = () => {
   const [destLatLng, setDestLatLng] = useState(null);
   const [distance, setDistance] = useState(null);
   const [input, setInput] = useState('');
+  const [totalAmount, setTotalAmount] = useState('');
+  const [moneyPerKilometer, setMoneyPerKilometer] = useState(null);
 
   const calculateDistance = () => {
     if (originLatLng && destLatLng) {
-      const R = 6371; // Radius of the earth in km
+      const R = 6371; 
       const dLat = deg2rad(destLatLng.lat - originLatLng.lat);
       const dLon = deg2rad(destLatLng.lng - originLatLng.lng);
       const a =
@@ -126,8 +22,17 @@ const Home = () => {
         Math.cos(deg2rad(originLatLng.lat)) * Math.cos(deg2rad(destLatLng.lat)) *
         Math.sin(dLon / 2) * Math.sin(dLon / 2);
       const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      const d = R * c; // Distance in km
+      const d = R * c; 
       setDistance(d.toFixed(2));
+    }
+  };
+
+  const handleCalculate = () => {
+    if (distance && totalAmount) {
+      const moneyPerKilometerValue = parseFloat(totalAmount) * parseFloat(distance);
+      setMoneyPerKilometer(moneyPerKilometerValue.toFixed(2));
+    } else {
+      setMoneyPerKilometer(13);
     }
   };
 
@@ -135,7 +40,7 @@ const Home = () => {
     return deg * (Math.PI / 180);
   };
 
-  const libraries = ['places'];
+  const libraries = ['places', 'directions'];
   const mapContainerStyle = {
     width: '864px',
     height: '494px',
@@ -187,6 +92,7 @@ const Home = () => {
 
   return (
     <div  className='input-wrapper'>
+      <div className='map'>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={15}
@@ -195,20 +101,43 @@ const Home = () => {
         {originLatLng && <Marker position={originLatLng} />}
         {destLatLng && <Marker position={destLatLng} />}
       </GoogleMap>
-      <input
-        placeholder="Enter origin"
-        value={origin}
-        onChange={(e) => setOrigin(e.target.value)}
-      />
-      <input
-        placeholder="Enter destination"
-        value={destination}
-        onChange={(e) => setDestination(e.target.value)}
-      />
-      <div>
-        <button onClick={calculateDistance}>Calculate Distance</button>
-        {distance && <p>Distance: {distance} km</p>}
       </div>
+      <div className='input'>
+        <h1 className='text'>Request a ride</h1>
+        <div className='info1'>
+        <input
+          placeholder="Enter origin"
+          value={origin}
+          onChange={(e) => setOrigin(e.target.value)}
+        />
+        </div>
+        <div className='info2'>
+        <input
+          placeholder="Enter destination"
+          value={destination}
+          onChange={(e) => setDestination(e.target.value)}
+        />
+        </div>
+        <div>
+          <button onClick={calculateDistance}>Calculate Distance</button>
+          {distance && <p>Distance: {distance} km</p>}
+        </div>
+        
+        
+        
+        <div>
+          <label htmlFor="totalAmountInput">Amout per Kilometer:</label>
+          <input
+            id="totalAmountInput"
+            value={totalAmount}
+            onChange={(e) => setTotalAmount(13)}
+          />
+        </div>
+        <button onClick={handleCalculate}>Calculate</button>
+        {moneyPerKilometer !== null && (
+          <p>Money per kilometer: Ksh{moneyPerKilometer}</p>
+        )}
+    </div>
     </div>
   );
 };

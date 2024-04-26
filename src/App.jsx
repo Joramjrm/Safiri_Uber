@@ -8,7 +8,6 @@ import About from "./components/About";
 import Signin from "./components/Signin";
 
   const App = () => {
-  const [] = useState(null);
 
   return (
     <Router>
