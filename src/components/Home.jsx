@@ -156,9 +156,9 @@ const Home = () => {
             onChange={(e) => setTotalAmount(13)}
           />
         </div>
-        <button onClick={handleCalculate}>Calculate</button>
+        <button onClick={handleCalculate}>Payment fee</button>
         {moneyPerKilometer !== null && (
-          <p>Money per kilometer: Ksh{moneyPerKilometer}</p>
+          <p> Ksh{moneyPerKilometer}</p>
         )}
     </div>
     <div className='booking'>
