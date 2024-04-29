@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, useLoadScript, Marker, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import videoBg from './Video.mp4';
 import './Home.css';
+import './Image.css';
 
 const Home = () => {
   const [origin, setOrigin] = useState('');
@@ -15,7 +17,7 @@ const Home = () => {
   const [dropoffLocation, setDropoffLocation] = useState('');
   const [vehicleType, setVehicleType] = useState('');
   const [dateTime, setDateTime] = useState('');
-  const [isBookingNow, setIsBookingNow] = useState(true); // Default to booking for now
+  const [isBookingNow, setIsBookingNow] = useState(true);
 
   const handleBookingTypeChange = (e) => {
     setIsBookingNow(e.target.value === 'now');
@@ -23,7 +25,6 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you can handle the form submission, e.g., make API calls
     console.log({
       pickupLocation,
       dropoffLocation,
@@ -147,8 +148,6 @@ const Home = () => {
           {distance && <p>Distance: {distance} km</p>}
         </div>
         
-        
-        
         <div>
           <label htmlFor="totalAmountInput">Amout per Kilometer:</label>
           <input
@@ -224,9 +223,36 @@ const Home = () => {
           Book for Later
         </label>
         <br />
+        <div className='book'>
         <button type="submit">Book Ride</button>
+        </div>
       </form>
     </div>
+    <div className='Text'>
+      <h1>The Uber you know, reimagined for business</h1>
+      <h2>Uber for Business is a platform for managing global rides and meals, and local deliveries, for companies of any size.
+      Uber's value proposition lies in its unparalleled combination of convenience, safety, affordability, and reliability, making it the optimal choice for modern travelers.
+
+Convenience: With Uber, convenience reigns supreme. 
+ 
+Safety: Safety is paramount at Uber.
+
+Affordability: Uber offers competitive pricing that won't break the bank.
+
+Reliability: Count on Uber to be there when you need it most. 
+
+In essence, Uber offers a transportation solution that seamlessly integrates convenience, safety, affordability, and reliability, providing users with a superior alternative to traditional transportation options.
+
+      </h2>
+    </div>
+    <div className='main-container'>
+    <div className='main'>
+            <video src={videoBg} autoPlay loop muted/>
+            <div className='content'>
+                <h1>May the safiri-uber protect you from the rain</h1>
+            </div>
+        </div>
+        </div>
     </div>
   );
 };

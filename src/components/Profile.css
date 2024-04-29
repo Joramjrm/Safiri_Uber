@@ -1,5 +1,6 @@
 .profile-card {
-    width: 340px;margin-top: 10px;margin-left: 450px; padding: 20px;border: 2px solid black;border-radius: 5px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 340px;margin-top: 10px;margin-left: 450px; padding: 18px;border: 2px solid black;border-radius: 5px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
   }
   
   .profile-card h2 {
@@ -40,13 +41,22 @@
   
   .profile-preview h3 {
     text-align: center;
-    margin-bottom: 10px;
+    font-size: larger;
+    font-weight: bolder;
   }
   
-  .profile-preview p {
-    margin-bottom: 5px;
+  .profile-preview {
+    width: 340px;
+    margin-top: -500px;
+    margin-left: 450px;
+    margin-bottom: 350px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
   }
-  .rating{
-    margin-left: 100px;
-    margin-top: 10px;
+  .head {
+    font-size: 26px;
+    font-weight: bolder;
   }

@@ -1,5 +1,6 @@
 .input-wrapper{
     padding: 20px;
+    font-size: 18px;
 }
 .map{
     width: 867px; margin-right: auto; padding: 1px;border: 1px solid black;border-radius: 2px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -10,34 +11,64 @@
     padding: 10px;
     width: 340px;
     margin-left: 880px;
-    margin-top: -400px;
+    margin-top: -490px;
     margin-bottom: 200px;
 }
 .info1 {
     margin-top: 9px;
-    border: 1px solid rgb(236, 236, 236);
-    width: 180px;
+    border: 1px solid white;
+    width: 280px;
+    height: 50px;
     border-radius: 6px;
+    text-align: center;
+    font-size: larger;
 }
 .info2 {
-    border  : 1px solid rgb(236, 236, 236);
-    width: 180px;
+    border  : 1px solid white;
+    width: 280px;
+    height: 50px;
     border-radius: 6px;
+    text-align: center;
+    font-size: larger;
 }
 .text {
     text-align:center;
-}
-.text {
     font-size: 18px;
     font-weight: bold;
 }
 .booking {
-    border  : 1px solid rgb(236, 236, 236);
+    border  : 1px solid white;
     width: 400px;
-    border-radius: 6px;
-}
-.booking h2 {
+    border-radius: 7px;
+    padding: 10px;
+    margin-top: 220px;
     font-size: 18px;
+}
+.book {
+    border  : 1px solid black;
+    width: 100px;
+    border-radius: 7px;
+    color: aliceblue;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
+    text-align: center;
+    background-color: gray;
+}
+.Text {
+    border : 1px white;
+    width: 600px;
+    color: aliceblue;
+    background-color: black;
+    border-radius: 5px;
+    padding: 20px;
+}
+.Text h1 {
+    font-size: 21px;
+    font-weight: bold;
+    text-align:center;
+}
+.Text h2 {
+    font-size: 18px;
+    font-weight: medium;
 }
