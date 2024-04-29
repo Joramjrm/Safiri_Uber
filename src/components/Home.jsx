@@ -115,6 +115,11 @@ const Home = () => {
 
   return (
     <div  className='input-wrapper'>
+      <div>
+        <h1 style={{fontSize: '40px', textAlign: 'center', fontWeight: 'bolder', marginTop: '-33px', color: 'maroon'}}>
+          Safiri-Uber
+        </h1>
+      </div>
       <div className='map'>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
