@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, useLoadScript, Marker, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
-import videoBg from './Video.mp4';
 import './Home.css';
-import './Image.css';
 
 const Home = () => {
   const [origin, setOrigin] = useState('');
@@ -148,6 +146,8 @@ const Home = () => {
           {distance && <p>Distance: {distance} km</p>}
         </div>
         
+        
+        
         <div>
           <label htmlFor="totalAmountInput">Amout per Kilometer:</label>
           <input
@@ -245,14 +245,6 @@ In essence, Uber offers a transportation solution that seamlessly integrates con
 
       </h2>
     </div>
-    <div className='main-container'>
-    <div className='main'>
-            <video src={videoBg} autoPlay loop muted/>
-            <div className='content'>
-                <h1>May the safiri-uber protect you from the rain</h1>
-            </div>
-        </div>
-        </div>
     </div>
   );
 };
