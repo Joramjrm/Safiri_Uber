@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, useLoadScript, Marker, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import './Home.css';
 
 const Home = () => {
@@ -116,7 +116,7 @@ const Home = () => {
   return (
     <div  className='input-wrapper'>
       <div>
-        <h1 style={{fontSize: '40px', textAlign: 'center', fontWeight: 'bolder', marginTop: '-33px', color: 'maroon'}}>
+        <h1 style={{fontSize: '36px', textAlign: 'center', fontWeight: 'bolder', marginTop: '-30px', color: 'ActiveBorder', fontFamily: 'monospace'}}>
           Safiri-Uber
         </h1>
       </div>
@@ -238,15 +238,38 @@ const Home = () => {
       <h2>Uber for Business is a platform for managing global rides and meals, and local deliveries, for companies of any size.
       Uber's value proposition lies in its unparalleled combination of convenience, safety, affordability, and reliability, making it the optimal choice for modern travelers.
 
-Convenience: With Uber, convenience reigns supreme. 
- 
-Safety: Safety is paramount at Uber.
+      Convenience: With Uber, convenience reigns supreme. 
+      
+      Safety: Safety is paramount at Uber.
 
-Affordability: Uber offers competitive pricing that won't break the bank.
+      Affordability: Uber offers competitive pricing that won't break the bank.
 
-Reliability: Count on Uber to be there when you need it most. 
+      Reliability: Count on Uber to be there when you need it most. 
 
-In essence, Uber offers a transportation solution that seamlessly integrates convenience, safety, affordability, and reliability, providing users with a superior alternative to traditional transportation options.
+      In essence, Uber offers a transportation solution that seamlessly integrates convenience, safety, affordability, and reliability, providing users with a superior alternative to traditional transportation options.
+
+      </h2>
+    </div>
+    <div className='img'>
+    <img src="src\assets\earner-illustra.pbg.webp" alt="profile" />
+    </div>
+    <div className='video'>
+      <video src="src\assets\tokyo-rainy-night-moewalls-com.mp4"></video>
+    </div>
+    <div className='Text-2'>
+      <h1>The Uber you know, reimagined for business</h1>
+      <h2>Uber for Business is a platform for managing global rides and meals, and local deliveries, for companies of any size.
+      Uber's value proposition lies in its unparalleled combination of convenience, safety, affordability, and reliability, making it the optimal choice for modern travelers.
+
+      Convenience: With Uber, convenience reigns supreme. 
+      
+      Safety: Safety is paramount at Uber.
+
+      Affordability: Uber offers competitive pricing that won't break the bank.
+
+      Reliability: Count on Uber to be there when you need it most. 
+
+      In essence, Uber offers a transportation solution that seamlessly integrates convenience, safety, affordability, and reliability, providing users with a superior alternative to traditional transportation options.
 
       </h2>
     </div>

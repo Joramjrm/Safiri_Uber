@@ -17,8 +17,8 @@ const Footer = () => {
       <div className="footer-section">
         <h3>Discover</h3>
         <ul>
-          <li><a href="#ride">Ride</a></li>
-          <li><a href="#drive">Drive</a></li>
+          <li><a href="./Home">Ride</a></li>
+          <li><a href="./Profile">Drive</a></li>
           <li><a href="#eat">Eat</a></li>
           <li><a href="#freight">Freight</a></li>
           <li><a href="#business">Business</a></li>
@@ -45,11 +45,11 @@ const Footer = () => {
       <div className="footer-section">
         <h3>Connect</h3>
         <ul>
-          <li><a href="facebook.com">Facebook</a></li>
-          <li><a href="twitter.com">Twitter</a></li>
-          <li><a href="instagram.com">Instagram</a></li>
-          <li><a href="linkedin.com">LinkedIn</a></li>
-          <li><a href="youtube.com">YouTube</a></li>
+          <li><a href="https://web.facebook.com/">Facebook</a></li>
+          <li><a href="https://twitter.com/?lang=en">Twitter</a></li>
+          <li><a href="https://www.instagram.com/">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/feed/">LinkedIn</a></li>
+          <li><a href="https://www.youtube.com/">YouTube</a></li>
         </ul>
       </div>
       <div className="footer-section">
